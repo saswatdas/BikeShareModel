@@ -1,0 +1,138 @@
+# Package Overview
+package_name: bikeshare_model
+
+# Data Files
+training_data_file: bike-rental-dataset.csv
+test_data_file: test.csv
+
+# Variables
+# The variable we are attempting to predict (bikecount)
+target: cnt
+
+pipeline_name: bikeshare_model
+pipeline_save_file: bikeshare__model_output_v
+
+features:      # final features to be used
+  - season
+  - hr 
+  - holiday 
+  - workingday
+  - weathersit  # generated  by  Sibsp + Parch +1 <--Before pipeline alongwith loading the data
+  - temp   # generated cabin              <--Before pipeline alongwith loading the data
+  - atemp       # generated from name          <--Before pipeline alongwith loading the data
+  - hum
+  - yr
+  - mnth
+  - windspeed
+  - day_Sunday
+  - day_Monday
+  - day_Tuesday
+  - day_Wednesday
+  - day_Thursday
+  - day_Friday
+  - day_Saturday 
+ 
+
+
+unused_fields:  # Features to drop before pipeline
+  - weekday
+  - casual
+  - registered
+  
+
+# Features inside processing pipeline
+
+mapyear_var: 'yr'
+month_var: 'mnth'
+holiday_var: 'holiday'
+workingday_var: 'workingday'
+season_var: 'season'
+weathersit_var: 'weathersit'
+hour_var: 'hr'
+temp_var: 'temp'
+windspeed_var: 'windspeed'
+hum_var: 'hum'
+day_Sunday_var: day_Sunday
+day_Monday_var: day_Monday
+day_Tuesday_var: day_Tuesday
+day_Wednesday_var: day_Wednesday
+day_Thursday_var: day__Thursday
+day_Friday_var: day_Friday
+day_Saturday_var: day_Saturday 
+
+month_mappings:
+  January: 1
+  February: 2
+  March: 3
+  April: 4
+  May: 5
+  June: 6
+  July: 7
+  August: 8
+  September: 9
+  October: 10
+  November: 11
+  December: 12
+
+year_mappings:
+  2011: 0
+  2012: 1
+
+holiday_mappings:
+  Yes: 0
+  No: 1
+
+workingday_mappings:
+  Yes: 0
+  No: 1
+
+season_mappings:
+  summer: 1
+  winter: 2
+  fall: 3
+  spring: 4
+
+weathersit_mappings:
+  Mist: 1
+  Clear: 2
+  Light Rain: 3
+  Heavy Rain: 4
+
+hour_mappings:
+  4am: 0
+  3am: 1
+  5am: 2
+  2am: 3
+  1am: 4
+  12am: 5
+  6am: 6
+  11pm: 7
+  10pm: 8
+  10am: 9
+  9pm: 10
+  11am: 11
+  7am: 12
+  9am: 13
+  8pm: 14
+  2pm: 15
+  1pm: 16
+  12pm: 17
+  3pm: 18
+  4pm: 19
+  7pm: 20
+  8am: 21
+  6pm: 22
+  5pm: 23
+  
+# set train/test split
+test_size: 0.20
+
+# to set the random seed
+random_state: 42
+# alogrithm parameters
+n_estimators: 3
+max_depth: 2
+learning_rate: 1
+criterion: 'squared_error'
+axis: 1
+
